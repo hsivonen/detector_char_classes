@@ -1,0 +1,9 @@
+[package]
+name = "detector_char_classes"
+version = "0.1.0"
+authors = ["Henri Sivonen <hsivonen@hsivonen.fi>"]
+edition = "2018"
+license = "CC0"
+
+[dependencies]
+encoding_rs = "0.8.17"
