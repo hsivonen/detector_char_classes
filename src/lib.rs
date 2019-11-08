@@ -21,7 +21,7 @@ pub fn is_latin(encoding: &'static Encoding) -> bool {
 	encoding == WINDOWS_1252 || encoding == WINDOWS_1250 || encoding == WINDOWS_1254 || encoding == WINDOWS_1257 || encoding == WINDOWS_1258 || encoding == ISO_8859_2 || encoding == ISO_8859_3 || encoding == ISO_8859_4 || encoding == ISO_8859_10 || encoding == ISO_8859_13 || encoding == ISO_8859_14 || encoding == ISO_8859_15 || encoding == ISO_8859_16 || encoding == MACINTOSH
 } 
 
-pub const CENTRAL: [&[char]; 76] = [
+pub const CENTRAL: [&[char]; 73] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -91,24 +91,21 @@ pub const CENTRAL: [&[char]; 76] = [
 	&['ü'],
 	&['ý'],
 	&['ţ'],
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-    &['\u{00AD}'], // shy
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±', '¢'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸', '˛', 'ˇ', '˘'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
-    &['ƒ'], // kana lead byte in Shift_JIS
+    &['·', '«', '»', '\u{00AD}', '¦'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¬', '±', '¢', '×', '÷', 'ƒ'], // implausible next to alphabetic on either side
+    &['®', '¶'], // implausible before alphabetic
+    &['©', '°', 'µ'], // implausible after alphabetic
 ];
 
 pub const CYRILLIC: [&[char]; 55] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-	&['\u{00AD}'], // shy, assigned to letter in windows-874
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-	&['¦', '©', '®', '°', 'µ', '¶', '·', '∙', '²'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±', '¢', '№', '×', '÷', '⌡', '⌠', '≈', '≤', '≥'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['─', '│', '┌', '┐', '└', '┘', '├', '┤', '┬', '┴', '┼', '═', '║', '╒', '╓', '╔', '╕', '╖', '╗', '╘', '╙', '╚', '╛', '╜', '╝', '╞', '╟', '╠', '╡', '╢', '╣', '╤', '╥', '╦', '╧', '╨', '╩', '╪', '╫', '╬', '▀', '▄', '█', '▌', '▐', '░', '▒', '▓', '■'], // box drawing
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '№', '⌡', '⌠', '─', '│', '┌', '┐', '└', '┘', '├', '┤', '┬', '┴', '┼', '═', '║', '╒', '╓', '╔', '╕', '╖', '╗', '╘', '╙', '╚', '╛', '╜', '╝', '╞', '╟', '╠', '╡', '╢', '╣', '╤', '╥', '╦', '╧', '╨', '╩', '╪', '╫', '╬', '▀', '▄', '█', '▌', '▐', '░', '▒', '▓', '■'], // implausible next to alphabetic on either side
+    &['®', '¶', '²', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 	&['ѓ'],
 	&['ђ'],
 	&['љ'],
@@ -158,7 +155,7 @@ pub const CYRILLIC: [&[char]; 55] = [
 	&['я'],
 ];
 
-pub const WESTERN: [&[char]; 74] = [
+pub const ICELANDIC: [&[char]; 68] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -222,71 +219,14 @@ pub const WESTERN: [&[char]; 74] = [
 	&['ý'],
 	&['þ'],
 	&['ÿ'],
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1250
-	&['ª', 'º'], // ordinal indicators, assigned to letters in windows-1250
-	&['¹', '²', '³'], // superscripts, ¹ and ³ assigned to letters in windows-1250
-    &['¡', '¿'], // Leading punctuation, ¿ assigned to letter in windows-1250
-    &['£', '¥', '¢'], // Prefixed currency symbols (euro is deliberately not here), assigned to letters in windows-1250
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-    &['\u{00AD}'], // shy
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'ª', 'º', '«', '»'], // implausible next to alphabetic on either side (ordinal indicators and guillemets deliberately here)
+    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
-pub const GREEK: [&[char]; 48] = [
-	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
-    &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-	&['¹', '²', '³'], // superscripts, assigned to letters in windows-1251
-    &['£', '¥', '€'], // currency symbols, assigned to letters in windows-1251
-    &['¨', '΅'], // lone accents, assigned to letters in windows-1251 (acute deliberately grouped with guillements because plausible!)
-    &['½'], // fraction, assigned to letters in windows-1251
-    &['―'], // horizontal bar, assigned to letters in windows-1251
-    &['«', '»', '΄'], // guillemets, assigned to letters in windows-874 (acute grouped here, because a letter followed by a non-combining acute/tonos is a thing in Greek content)
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±', '№'], // symbols implausible next to letter, assigned to letters in windows-874
-    &['ƒ'], // kana lead byte in Shift_JIS
-	&['ΐ'],
-	&['ά'],
-	&['έ'],
-	&['ή'],
-	&['ί'],
-	&['ΰ'],
-	&['α'],
-	&['β'],
-	&['γ'],
-	&['δ'],
-	&['ε'],
-	&['ζ'],
-	&['η'],
-	&['θ'],
-	&['ι'],
-	&['κ'],
-	&['λ'],
-	&['μ'],
-	&['ν'],
-	&['ξ'],
-	&['ο'],
-	&['π'],
-	&['ρ'],
-	&['ς'],
-	&['σ'],
-	&['τ'],
-	&['υ'],
-	&['φ'],
-	&['χ'],
-	&['ψ'],
-	&['ω'],
-	&['ϊ'],
-	&['ϋ'],
-	&['ό'],
-	&['ύ'],
-	&['ώ'],
-];
-
-pub const TURKISH: [&[char]; 74] = [
+pub const WESTERN: [&[char]; 67] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -334,7 +274,6 @@ pub const TURKISH: [&[char]; 74] = [
 	&['í'],
 	&['î'],
 	&['ï'],
-	&['ğ'],
 	&['ñ'],
 	&['ò'],
 	&['ó'],
@@ -346,38 +285,124 @@ pub const TURKISH: [&[char]; 74] = [
 	&['ú'],
 	&['û'],
 	&['ü'],
-	&['ı'],
-	&['ş'],
-	&['ÿ'],
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1250
-	&['ª', 'º'], // ordinal indicators, assigned to letters in windows-1250
-	&['¹', '²', '³'], // superscripts, ¹ and ³ assigned to letters in windows-1250
-    &['¡', '¿'], // Leading punctuation, ¿ assigned to letter in windows-1250
-    &['£', '¥', '¢'], // Prefixed currency symbols (euro is deliberately not here), assigned to letters in windows-1250
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-    &['\u{00AD}'], // shy
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
-    &['ƒ'], // kana lead byte in Shift_JIS
+	&['ý'], // Unused vowel (used in Icelandic and Faroese)
+	&['þ', 'ð', 'ž'], // Unused consonants (þ is used in Icelandic, eth is used in Icelandic and Faroese, the Finnish language regulator wants to use 'ž' for foreign words, but that usage rounds to zero here)
+	&['ÿ'], // XXX Add Dutch to training set
+    &['·', '«', '»', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+	&['ª', 'º'], // ordinal indicators
 ];
 
-pub const HEBREW: [&[char]; 63] = [
+pub const GREEK: [&[char]; 43] = [
+	&[' '], // Space-like
+    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
+    &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+    &['·', '´', '\u{00AD}', '¦', '∙', '―', '¬', '±', '×', '÷', '≈', '≤', '≥'], // plausible next to alphabetic on either side (acute/tonos and math operators deliberately here)
+    &['¨', '¯', '¸', '˛', 'ˇ', '˘', '΅', '¤', '§', '¢', 'ƒ', '£', '¥', '€', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+ 	&['ΐ'],
+	&['ά'],
+	&['έ'],
+	&['ή'],
+	&['ί'],
+	&['ΰ'],
+	&['α'],
+	&['β'],
+	&['γ'],
+	&['δ'],
+	&['ε'],
+	&['ζ'],
+	&['η'],
+	&['θ'],
+	&['ι'],
+	&['κ'],
+	&['λ'],
+	&['μ'],
+	&['ν'],
+	&['ξ'],
+	&['ο'],
+	&['π'],
+	&['ρ'],
+	&['ς'],
+	&['σ'],
+	&['τ'],
+	&['υ'],
+	&['φ'],
+	&['χ'],
+	&['ψ'],
+	&['ω'],
+	&['ϊ'],
+	&['ϋ'],
+	&['ό'],
+	&['ύ'],
+	&['ώ'],
+];
+
+pub const TURKISH: [&[char]; 46] = [
+	&[' '], // Space-like
+    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
+	&['a'],
+	&['b'],
+	&['c'],
+	&['d'],
+	&['e'],
+	&['f'],
+	&['g'],
+	&['h'],
+	// i treated as non-ASCII
+	&['j'],
+	&['k'],
+	&['l'],
+	&['m'],
+	&['n'],
+	&['o'],
+	&['p'],
+	&['q'],
+	&['r'],
+	&['s'],
+	&['t'],
+	&['u'],
+	&['v'],
+	&['w'],
+	&['x'],
+	&['y'],
+	&['z'],
+	&['š'],
+	&['œ', 'å', 'à', 'á', 'ã', 'â', 'æ', 'è', 'é', 'ë', 'ì', 'í', 'ï', 'ò', 'ó', 'ô', 'õ', 'ø', 'ù', 'ú', 'ÿ'], // Unused vowels
+	&['ß', 'ñ'], // Unused consonants
+	&['ä'], // Used for windows-1254-compatible Azeri spelling
+	&['ç'],
+	&['ê'],
+	&['î'],
+	&['ğ'],
+	&['ö'],
+	&['û'],
+	&['ü'],
+	&['i'], // Dotted i treated as non-ASCII
+	&['ı'],
+	&['ş'],
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'ª', 'º'], // implausible next to alphabetic on either side (ordinal indicators deliberately here)
+    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+];
+
+pub const HEBREW: [&[char]; 59] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
 	&['.', ',', ':', ';', '?', '!'],
-	&['₪'], // currency sign
-	&['¹', '²', '³'], // superscripts, assigned to letters in windows-1251
-    &['¡', '¿'], // Leading punctuation, assigned to letters in windows-1251
-    &['£', '¥', '€', '¢'], // currency symbols, assigned to letters in windows-1251
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1251
-    &['¨', '´', '¯', '¸'], // lone accents, assigned to letters in windows-1251
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
-	&['¦', '©', '®', '°', 'µ', '¶', '·', '«', '»', '‗'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±', '№'], // symbols implausible next to letter, assigned to letters in windows-874
-    &['ƒ'], // kana lead byte in Shift_JIS
+    &['·', '\u{00AD}', '¦', '∙', '‗'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥', '«', '»'], // implausible next to non-ASCII alphabetic
+	&['₪'], // currency sign (deliberately not merged with other currency signs)
     &['\u{200E}', '\u{200F}'],
 	&['ְ'],
 	&['ֱ'],
@@ -429,22 +454,18 @@ pub const HEBREW: [&[char]; 63] = [
 	&['ת'],
 ];
 
-pub const ARABIC: [&[char]; 72] = [
+pub const ARABIC: [&[char]; 68] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ü', 'œ', 'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Œ'],
 	&['\u{200C}'], // ZWNJ
 	&['\u{200D}'], // ZWJ
-	&['¹', '²', '³'], // superscripts, assigned to letters in windows-1251
     &['؛', '؟', '،'], // punctuation, assigned to letters in windows-1251
-    &['£', '¥', '€', '¢'], // currency symbols, assigned to letters in windows-1251
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1251
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
-    &['ƒ'], // kana lead byte in Shift_JIS
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 	&['پ'],
 	&['ٹ'],
 	&['چ'],
@@ -504,9 +525,7 @@ pub const ARABIC: [&[char]; 72] = [
 	&['ے'],
 ];
 
-// pub const ARABIC_FRENCH: [char; 28] = ['à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ü', 'œ', 'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Œ'];
-
-pub const BALTIC: [&[char]; 61] = [
+pub const BALTIC: [&[char]; 58] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -525,12 +544,14 @@ pub const BALTIC: [&[char]; 61] = [
 	&['n'],
 	&['o'],
 	&['p'],
-	&['q', 'w', 'x'], // Unused ASCII consonants
+	&['q'], // Unused ASCII consonant
 	&['r'],
 	&['s'],
 	&['t'],
 	&['u'],
 	&['v'],
+	&['w'], // Unused ASCII consonant
+	&['x'], // Unusad ASCII consonant
 	&['y'], // Unused ASCII vowel
 	&['z'],
 	&['ø', 'æ', 'å', 'ó'], // Unused non-ASCII vowels
@@ -558,19 +579,14 @@ pub const BALTIC: [&[char]; 61] = [
 	&['ū'], //
 	&['ü'], //
 	&['ž'], //
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1250
-	&['¹', '²', '³'], // superscripts, ¹ and ³ assigned to letters in windows-1250
-    &['¡', '¿'], // Leading punctuation, ¿ assigned to letter in windows-1250
-    &['£', '¥', '¢'], // Prefixed currency symbols (euro is deliberately not here), assigned to letters in windows-1250
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-    &['\u{00AD}'], // shy
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
-pub const VIETNAMESE: [&[char]; 75] = [
+pub const VIETNAMESE: [&[char]; 59] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -599,53 +615,38 @@ pub const VIETNAMESE: [&[char]; 75] = [
 	&['x'],
 	&['y'],
 	&['z'],
-	&['œ'],
+	&['œ', 'ä', 'å', 'æ', 'ë', 'ö', 'ø', 'ü'], // Foreign vowels
 	&['̀'],
 	&['̉'],
 	&['̃'],
-	&['ß'],
+	&['ß', 'ç', 'ñ'], // Foreign consonants
 	&['à'],
 	&['á'],
 	&['â'],
 	&['ă'],
-	&['ä'],
-	&['å'],
-	&['æ'],
-	&['ç'],
 	&['è'],
 	&['é'],
 	&['ê'],
-	&['ë'],
 	&['́'],
 	&['í'],
 	&['î'],
-	&['ï'],
+	&['ï'], // Used quite a bit in a manner similar to French (to indicate absence of diphtong)
 	&['đ'],
-	&['ñ'],
 	&['̣'],
 	&['ó'],
 	&['ô'],
 	&['ơ'],
-	&['ö'],
-	&['ø'],
 	&['ù'],
 	&['ú'],
 	&['û'],
-	&['ü'],
 	&['ư'],
-	&['ÿ'],
-	&['¼', '½', '¾'], // fractions, ¼ and ¾ assigned to letters in windows-1250
-	&['ª', 'º'], // ordinal indicators, assigned to letters in windows-1250
-	&['¹', '²', '³'], // superscripts, ¹ and ³ assigned to letters in windows-1250
-    &['¡', '¿'], // Leading punctuation, ¿ assigned to letter in windows-1250
-    &['£', '¥', '¢'], // Prefixed currency symbols (euro is deliberately not here), assigned to letters in windows-1250
-    &['«', '»'], // guillemets, assigned to letters in windows-874
-    &['\u{00AD}'], // shy
-	&['¦', '©', '®', '°', 'µ', '¶', '·'], // symbols plausible next to letter, assigned to letters in windows-874
-	&['¤', '§', '¬', '±'], // symbols implausible next to letter, assigned to letters in windows-874
-	&['¨', '¯', '´', '¸'], // lone accents, assigned to letters in windows-874
-    &['×', '÷'], // math operators, assigned to letters in windows-1251
-    &['ƒ'], // kana lead byte in Shift_JIS
+	&['ÿ'], // Distinctive enough not to be grouped together with foreign vowels
+	// ₫ // currency sign (suffixed to digits)
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '«', '»', 'ª', 'º'], // implausible next to alphabetic on either side (ordinal indicators and guillements deliberately here)
+    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
 pub const THAI: [&[char]; 78] = [
