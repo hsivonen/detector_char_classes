@@ -155,7 +155,7 @@ pub const CYRILLIC: [&[char]; 55] = [
 	&['я'],
 ];
 
-pub const ICELANDIC: [&[char]; 68] = [
+pub const ICELANDIC: [&[char]; 46] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -184,41 +184,19 @@ pub const ICELANDIC: [&[char]; 68] = [
 	&['x'],
 	&['y'],
 	&['z'],
-	&['š'],
-	&['œ'],
-	&['ž'],
-	&['ß'],
-	&['à'],
+	&['š', 'ž', 'ß', 'ç', 'œ', 'à', 'â', 'ã', 'å', 'è', 'ê', 'ë', 'ì', 'î', 'ï', 'ò', 'ô', 'õ', 'ù', 'û', 'ü', 'ÿ', 'ñ'],
 	&['á'],
-	&['â'],
-	&['ã'],
 	&['ä'],
-	&['å'],
 	&['æ'],
-	&['ç'],
-	&['è'],
 	&['é'],
-	&['ê'],
-	&['ë'],
-	&['ì'],
 	&['í'],
-	&['î'],
-	&['ï'],
 	&['ð'],
-	&['ñ'],
-	&['ò'],
 	&['ó'],
-	&['ô'],
-	&['õ'],
 	&['ö'],
 	&['ø'],
-	&['ù'],
 	&['ú'],
-	&['û'],
-	&['ü'],
 	&['ý'],
 	&['þ'],
-	&['ÿ'],
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'ª', 'º', '«', '»'], // implausible next to alphabetic on either side (ordinal indicators and guillemets deliberately here)
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
@@ -285,8 +263,8 @@ pub const WESTERN: [&[char]; 67] = [
 	&['ú'],
 	&['û'],
 	&['ü'],
-	&['ý'], // Unused vowel (used in Icelandic and Faroese)
-	&['þ', 'ð', 'ž'], // Unused consonants (þ is used in Icelandic, eth is used in Icelandic and Faroese, the Finnish language regulator wants to use 'ž' for foreign words, but that usage rounds to zero here)
+	&['þ', 'ð', 'ý'], // Unused except in Icelandic and Faroese. Grouped together in order to mark these as implausible to avoid misdetection of Turkish
+	&['ž'], // The Finnish language regulator wants to use 'ž' for foreign words, but that usage rounds to zero here.
 	&['ÿ'], // XXX Add Dutch to training set
     &['·', '«', '»', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
