@@ -264,7 +264,7 @@ pub const WESTERN: [&[char]; 67] = [
 	&['û'],
 	&['ü'],
 	&['þ', 'ð', 'ý'], // Unused except in Icelandic and Faroese. Grouped together in order to mark these as implausible to avoid misdetection of Turkish
-	&['ž'], // The Finnish language regulator wants to use 'ž' for foreign words, but that usage rounds to zero here.
+	&['ž'],
 	&['ÿ'], // XXX Add Dutch to training set
     &['·', '«', '»', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
@@ -503,7 +503,7 @@ pub const ARABIC: [&[char]; 68] = [
 	&['ے'],
 ];
 
-pub const BALTIC: [&[char]; 58] = [
+pub const BALTIC: [&[char]; 54] = [
 	&[' '], // Space-like
     &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
@@ -532,13 +532,12 @@ pub const BALTIC: [&[char]; 58] = [
 	&['x'], // Unusad ASCII consonant
 	&['y'], // Unused ASCII vowel
 	&['z'],
-	&['ø', 'æ', 'å', 'ó'], // Unused non-ASCII vowels
+	&['ø', 'æ', 'å', 'ó', 'ĩ', 'ô', 'ú', 'ä', 'õ', 'ö', 'ü', 'û', 'ũ', 'í', 'î', 'ë', 'ã', 'â', 'á'], // Unused non-ASCII vowels
 	&['ŗ'], //
-	&['ß', 'ć', 'ź', 'ń', 'ł', 'ś', 'ż'], // Unused non-ASCII consonants
+	&['ß', 'ć', 'ź', 'ń', 'ł', 'ś', 'ż', 'ĸ', 'ŧ', 'ŋ', 'đ'], // Unused non-ASCII consonants
 	&['ą'], //
 	&['į'], //
 	&['ā'], // 
-	&['ä'], //
 	&['ę'], //
 	&['ē'], //
 	&['č'], //
@@ -551,14 +550,11 @@ pub const BALTIC: [&[char]; 58] = [
 	&['š'], //
 	&['ņ'], //
 	&['ō'], //
-	&['õ'], //
-	&['ö'], //
 	&['ų'], //
 	&['ū'], //
-	&['ü'], //
 	&['ž'], //
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
     &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
