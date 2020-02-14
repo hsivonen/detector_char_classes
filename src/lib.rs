@@ -21,9 +21,8 @@ pub fn is_latin(encoding: &'static Encoding) -> bool {
 	encoding == WINDOWS_1252 || encoding == WINDOWS_1250 || encoding == WINDOWS_1254 || encoding == WINDOWS_1257 || encoding == WINDOWS_1258 || encoding == ISO_8859_2 || encoding == ISO_8859_3 || encoding == ISO_8859_4 || encoding == ISO_8859_10 || encoding == ISO_8859_13 || encoding == ISO_8859_14 || encoding == ISO_8859_15 || encoding == ISO_8859_16 || encoding == MACINTOSH
 } 
 
-pub const CENTRAL: [&[char]; 73] = [
+pub const CENTRAL: [&[char]; 72] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -92,14 +91,13 @@ pub const CENTRAL: [&[char]; 73] = [
 	&['ý'],
 	&['ţ'],
     &['·', '«', '»', '\u{00AD}', '¦'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¬', '±', '¢', '×', '÷', 'ƒ'], // implausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¬', '±', '¢', '×', '÷', 'ƒ'], // implausible next to alphabetic on either side
     &['®', '¶'], // implausible before alphabetic
     &['©', '°', 'µ'], // implausible after alphabetic
 ];
 
-pub const CYRILLIC: [&[char]; 55] = [
+pub const CYRILLIC: [&[char]; 54] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '№', '⌡', '⌠', '─', '│', '┌', '┐', '└', '┘', '├', '┤', '┬', '┴', '┼', '═', '║', '╒', '╓', '╔', '╕', '╖', '╗', '╘', '╙', '╚', '╛', '╜', '╝', '╞', '╟', '╠', '╡', '╢', '╣', '╤', '╥', '╦', '╧', '╨', '╩', '╪', '╫', '╬', '▀', '▄', '█', '▌', '▐', '░', '▒', '▓', '■'], // implausible next to alphabetic on either side
@@ -155,9 +153,8 @@ pub const CYRILLIC: [&[char]; 55] = [
 	&['я'],
 ];
 
-pub const ICELANDIC: [&[char]; 46] = [
+pub const ICELANDIC: [&[char]; 45] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -204,9 +201,8 @@ pub const ICELANDIC: [&[char]; 46] = [
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
-pub const WESTERN: [&[char]; 67] = [
+pub const WESTERN: [&[char]; 66] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -274,14 +270,13 @@ pub const WESTERN: [&[char]; 67] = [
 	&['ª', 'º'], // ordinal indicators
 ];
 
-pub const GREEK: [&[char]; 43] = [
+pub const GREEK: [&[char]; 42] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
     &['·', '´', '\u{00AD}', '¦', '∙', '―', '¬', '±', '×', '÷', '≈', '≤', '≥'], // plausible next to alphabetic on either side (acute/tonos and math operators deliberately here)
-    &['¨', '¯', '¸', '˛', 'ˇ', '˘', '΅', '¤', '§', '¢', 'ƒ', '£', '¥', '€', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
-    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
-    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['¨', '¯', '¸', '˛', 'ˇ', '˘', '΅', 'ͺ', '¤', '§', '¢', 'ƒ', '£', '¥', '€', '№', '⌡', '⌠', '₯'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»', '’'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«', '‘'], // implausible after alphabetic
  	&['ΐ'],
 	&['ά'],
 	&['έ'],
@@ -320,9 +315,8 @@ pub const GREEK: [&[char]; 43] = [
 	&['ώ'],
 ];
 
-pub const TURKISH: [&[char]; 46] = [
+pub const TURKISH: [&[char]; 45] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -349,10 +343,10 @@ pub const TURKISH: [&[char]; 46] = [
 	&['x'],
 	&['y'],
 	&['z'],
-	&['š'],
-	&['œ', 'å', 'à', 'á', 'ã', 'â', 'æ', 'è', 'é', 'ë', 'ì', 'í', 'ï', 'ò', 'ó', 'ô', 'õ', 'ø', 'ù', 'ú', 'ÿ'], // Unused vowels
-	&['ß', 'ñ'], // Unused consonants
+	&['œ', 'å', 'à', 'á', 'ã', 'æ', 'è', 'é', 'ë', 'ì', 'í', 'ï', 'ò', 'ó', 'ô', 'õ', 'ø', 'ù', 'ú', 'ÿ'], // Unused vowels
+	&['ß', 'ñ', 'š'], // Unused consonants
 	&['ä'], // Used for windows-1254-compatible Azeri spelling
+	&['â'],
 	&['ç'],
 	&['ê'],
 	&['î'],
@@ -370,18 +364,17 @@ pub const TURKISH: [&[char]; 46] = [
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
-pub const HEBREW: [&[char]; 59] = [
+pub const HEBREW: [&[char]; 58] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-	&['.', ',', ':', ';', '?', '!'],
-    &['·', '\u{00AD}', '¦', '∙', '‗'], // plausible next to alphabetic on either side
+    &['·', '\u{00AD}', '¦', '∙', '‗', '׀', '־'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥', '«', '»'], // implausible next to non-ASCII alphabetic
 	&['₪'], // currency sign (deliberately not merged with other currency signs)
     &['\u{200E}', '\u{200F}'],
+    &['\u{05BF}'],
 	&['ְ'],
 	&['ֱ'],
 	&['ֲ'],
@@ -434,16 +427,16 @@ pub const HEBREW: [&[char]; 59] = [
 
 pub const ARABIC: [&[char]; 68] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ü', 'œ', 'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Œ'],
 	&['\u{200C}'], // ZWNJ
-	&['\u{200D}'], // ZWJ
+	&['\u{200D}'], // ZWJ // Consider collapsing to plausible next to alphabetic
     &['؛', '؟', '،'], // punctuation, assigned to letters in windows-1251
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
     &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &['\u{200E}', '\u{200F}'],
 	&['پ'],
 	&['ٹ'],
 	&['چ'],
@@ -503,9 +496,8 @@ pub const ARABIC: [&[char]; 68] = [
 	&['ے'],
 ];
 
-pub const BALTIC: [&[char]; 54] = [
+pub const BALTIC: [&[char]; 53] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -553,16 +545,15 @@ pub const BALTIC: [&[char]; 54] = [
 	&['ų'], //
 	&['ū'], //
 	&['ž'], //
-    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['·', '\u{00AD}', '¦', '∙', '’', '“'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
-    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
-    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['®', '¶', '¹', '²', '³', '»', '”'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«', '„'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 ];
 
-pub const VIETNAMESE: [&[char]; 59] = [
+pub const VIETNAMESE: [&[char]; 58] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
 	&['a'],
 	&['b'],
 	&['c'],
@@ -615,9 +606,8 @@ pub const VIETNAMESE: [&[char]; 59] = [
 	&['û'],
 	&['ư'],
 	&['ÿ'], // Distinctive enough not to be grouped together with foreign vowels
-	// ₫ // currency sign (suffixed to digits)
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '«', '»', 'ª', 'º'], // implausible next to alphabetic on either side (ordinal indicators and guillements deliberately here)
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '«', '»', 'ª', 'º', '₫'], // implausible next to alphabetic on either side (ordinal indicators and guillements deliberately here)
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
@@ -625,15 +615,15 @@ pub const VIETNAMESE: [&[char]; 59] = [
 
 pub const THAI: [&[char]; 78] = [
 	&[' '], // Space-like
-    &['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], // ASCII digits
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-	&['€'], // euro, assigned to letter in windows-1251
+	&['€', '฿'], // euro, assigned to letter in windows-1251
+	&['๚', '๛', '๏'],
 	&['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'],
 	&['ก'],
 	&['ข'],
-	&['ฃ'],
+	&['ฃ'], // Obsolete but more common
 	&['ค'],
-	&['ฅ'],
+	&['ฅ'], // Obsolete
 	&['ฆ'],
 	&['ง'],
 	&['จ'],
@@ -666,7 +656,7 @@ pub const THAI: [&[char]; 78] = [
 	&['ร'],
 	&['ฤ'],
 	&['ล'],
-	&['ฦ'],
+	&['ฦ'], // Obsolete
 	&['ว'],
 	&['ศ'],
 	&['ษ'],
@@ -692,7 +682,7 @@ pub const THAI: [&[char]; 78] = [
 	&['โ'],
 	&['ใ'],
 	&['ไ'],
-	&['ๅ'],
+	&['ๅ'], // Obsolete
 	&['ๆ'],
 	&['็'],
 	&['่'],
