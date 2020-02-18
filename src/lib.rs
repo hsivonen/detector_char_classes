@@ -583,20 +583,20 @@ pub const THAI: [&[char]; 73] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
 	&['€', '฿', '๚', '๛', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'],
-	&['ก'],
-	&['ข'],
-	&['ค'],
-	&['ฆ'],
-	&['ง'],
-	&['จ'],
-	&['ฉ'],
+	&['ก'], // Lead for CJK punctuation
+	&['ข'], // GB numbers
+	&['ค'], // EUC-JP Hiragana lead
+	&['ฆ'], // Greek, parantheses
+	&['ง'], // Cyrillic
+	&['จ'], // Pinyin
+	&['ฉ'], // Box drawing
 	&['ช'],
 	&['ซ'],
 	&['ฌ'],
 	&['ญ'],
 	&['ฎ'],
-	&['ฏ'],
-	&['ฐ'],
+	&['ฏ'], // Last IBM866 lower case
+	&['ฐ'], // Level 1 start
 	&['ฑ'],
 	&['ฒ'],
 	&['ณ'],
@@ -612,38 +612,37 @@ pub const THAI: [&[char]; 73] = [
 	&['ฝ'],
 	&['พ'],
 	&['ฟ'],
-	&['ภ'],
+	&['ภ'], // Windows upper case and KOI lower case start
 	&['ม'],
 	&['ย'],
 	&['ร'],
 	&['ฤ'],
 	&['ล'],
 	&['ว'],
-	&['ศ'],
+	&['ศ'], // Last Hangul
 	&['ษ'],
 	&['ส'],
 	&['ห'],
 	&['ฬ'],
 	&['อ'],
 	&['ฮ'],
-	&['ฯ'],
-	&['ะ'],
+	&['ฯ'], // Last EUC-JP Level 1
+	&['ะ'], // First ISO-8859-5 lower case
 	&['ั'],
 	&['า'],
 	&['ำ'],
 	&['ิ'],
 	&['ี'],
 	&['ึ'],
-	&['ื'],
+	&['ื'], // Last GB Level 1
 	&['ุ'],
 	&['ู'],
 	&['ฺ'],
-	&['เ'],
+	&['เ'], // Windows lowel case and KOI upper case start
 	&['แ'],
 	&['โ'],
 	&['ใ'],
 	&['ไ'],
-	&['ๅ', 'ฦ', 'ฅ', 'ฃ'], // Obsolete
 	&['ๆ'],
 	&['็'],
 	&['่'],
@@ -653,4 +652,5 @@ pub const THAI: [&[char]; 73] = [
 	&['์'],
 	&['ํ'],
 	&['๎'],
+	&['ๅ', 'ฦ', 'ฅ', 'ฃ'], // Obsolete (contains EUC-JP Katakana lead, full-width ASCII)
 ];
