@@ -21,7 +21,7 @@ pub fn is_latin(encoding: &'static Encoding) -> bool {
 	encoding == WINDOWS_1252 || encoding == WINDOWS_1250 || encoding == WINDOWS_1254 || encoding == WINDOWS_1257 || encoding == WINDOWS_1258 || encoding == ISO_8859_2 || encoding == ISO_8859_3 || encoding == ISO_8859_4 || encoding == ISO_8859_10 || encoding == ISO_8859_13 || encoding == ISO_8859_14 || encoding == ISO_8859_15 || encoding == ISO_8859_16 || encoding == MACINTOSH
 } 
 
-pub const CENTRAL: [&[char]; 72] = [
+pub const CENTRAL: [&[char]; 74] = [
 	&[' '], // Space-like
 	&['a'],
 	&['b'],
@@ -90,20 +90,18 @@ pub const CENTRAL: [&[char]; 72] = [
 	&['ü'],
 	&['ý'],
 	&['ţ'],
+	// Start non-stored classes
     &['·', '«', '»', '\u{00AD}', '¦'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¬', '±', '¢', '×', '÷', 'ƒ'], // implausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¬', '±', '¢', 'ƒ'], // implausible next to alphabetic on either side
     &['®', '¶'], // implausible before alphabetic
     &['©', '°', 'µ'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const CYRILLIC: [&[char]; 51] = [
+pub const CYRILLIC: [&[char]; 52] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '№', '⌡', '⌠', '─', '│', '┌', '┐', '└', '┘', '├', '┤', '┬', '┴', '┼', '═', '║', '╒', '╓', '╔', '╕', '╖', '╗', '╘', '╙', '╚', '╛', '╜', '╝', '╞', '╟', '╠', '╡', '╢', '╣', '╤', '╥', '╦', '╧', '╨', '╩', '╪', '╫', '╬', '▀', '▄', '█', '▌', '▐', '░', '▒', '▓', '■'], // implausible next to alphabetic on either side
-    &['®', '¶', '²', '»'], // implausible before alphabetic
-    &['©', '°', 'µ', '«'], // implausible after alphabetic
-    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 	&['ѓ', 'ґ', 'ќ', 'ѕ'],
 	&['ђ'],
 	&['љ'],
@@ -148,9 +146,16 @@ pub const CYRILLIC: [&[char]; 51] = [
 	&['э'],
 	&['ю'],
 	&['я'],
+	// Start non-stored classes
+    &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '№', '⌡', '⌠', '─', '│', '┌', '┐', '└', '┘', '├', '┤', '┬', '┴', '┼', '═', '║', '╒', '╓', '╔', '╕', '╖', '╗', '╘', '╙', '╚', '╛', '╜', '╝', '╞', '╟', '╠', '╡', '╢', '╣', '╤', '╥', '╦', '╧', '╨', '╩', '╪', '╫', '╬', '▀', '▄', '█', '▌', '▐', '░', '▒', '▓', '■'], // implausible next to alphabetic on either side
+    &['®', '¶', '²', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const ICELANDIC: [&[char]; 45] = [
+pub const ICELANDIC: [&[char]; 46] = [
 	&[' '], // Space-like
 	&['a'],
 	&['b'],
@@ -191,11 +196,13 @@ pub const ICELANDIC: [&[char]; 45] = [
 	&['ú'],
 	&['ý'],
 	&['þ'],
+	// Start non-stored classes
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'ª', 'º', '«', '»'], // implausible next to alphabetic on either side (ordinal indicators and guillemets deliberately here)
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
 pub const WESTERN: [&[char]; 65] = [
@@ -258,21 +265,18 @@ pub const WESTERN: [&[char]; 65] = [
 	&['ü'],
 	&['ž'],
 	&['ÿ'], // XXX Add Dutch to training set
+	// Start non-stored classes
     &['·', '«', '»', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'þ', 'ð', 'ý'], // implausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'þ', 'ð', 'ý', 'ª', 'º'], // implausible next to alphabetic on either side
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
-	&['ª', 'º'], // ordinal indicators
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const GREEK: [&[char]; 41] = [
+pub const GREEK: [&[char]; 43] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-    &['·', '´', '\u{00AD}', '¦', '∙', '―', '¬', '±', '×', '÷', '≈', '≤', '≥'], // plausible next to alphabetic on either side (acute/tonos and math operators deliberately here)
-    &['¨', '¯', '¸', '˛', 'ˇ', '˘', '΅', 'ͺ', '¤', '§', '¢', 'ƒ', '£', '¥', '€', '№', '⌡', '⌠', '₯'], // implausible next to alphabetic on either side
-    &['®', '¶', '¹', '²', '³', '»', '’'], // implausible before alphabetic
-    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«', '‘'], // implausible after alphabetic
  	&['ΐ', 'ΰ'],
 	&['ά'],
 	&['έ'],
@@ -308,9 +312,16 @@ pub const GREEK: [&[char]; 41] = [
 	&['ό'],
 	&['ύ'],
 	&['ώ'],
+	// Start non-stored classes
+    &['·', '´', '\u{00AD}', '¦', '∙', '―', '¬', '±', '×', '÷', '≈', '≤', '≥'], // plausible next to alphabetic on either side (acute/tonos and math operators deliberately here)
+    &['¨', '¯', '¸', '˛', 'ˇ', '˘', '΅', 'ͺ', '¤', '§', '¢', 'ƒ', '£', '¥', '€', '№', '⌡', '⌠', '₯'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»', '’'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«', '‘'], // implausible after alphabetic
+    &[], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const TURKISH: [&[char]; 44] = [
+pub const TURKISH: [&[char]; 45] = [
 	&[' '], // Space-like
 	&['a'],
 	&['b'],
@@ -351,22 +362,18 @@ pub const TURKISH: [&[char]; 44] = [
 	&['û'],
 	&['ü'],
 	&['ş'],
+	// Start non-stored classes
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', 'ª', 'º'], // implausible next to alphabetic on either side (ordinal indicators deliberately here)
     &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
 pub const HEBREW: [&[char]; 42] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-    &['·', '\u{00AD}', '¦', '∙', '‗', '׀', '־'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '₪', '\u{200E}', '\u{200F}', '\u{05BF}'], // implausible next to alphabetic on either side
-    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
-    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
-    &['¬', '±', '×', '÷', '≈', '≤', '≥', '«', '»'], // implausible next to non-ASCII alphabetic
-	&['״', '׳'], // implausible next to ASCII alphabetic
 	&['ְ', 'ֱ', 'ֲ', 'ֳ', 'ִ', 'ֵ', 'ֶ', 'ֹ', 'ֺ', 'ֻ', 'ֽ', 'ׁ', 'ׂ'],
 	&['ַ'], // Don't group
 	&['ָ'], // Don't group
@@ -401,18 +408,19 @@ pub const HEBREW: [&[char]; 42] = [
 	&['ר'],
 	&['ש'],
 	&['ת'],
+	// Start non-stored classes
+    &['·', '\u{00AD}', '¦', '∙', '‗', '׀', '־'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '₪', '\u{200E}', '\u{200F}', '\u{05BF}'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥', '«', '»'], // implausible next to non-ASCII alphabetic
+	&['״', '׳'], // implausible next to ASCII alphabetic
 ];
 
 pub const ARABIC: [&[char]; 59] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'à', 'â', 'ç', 'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ü', 'œ', 'À', 'Â', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Ù', 'Û', 'Ü', 'Œ'],
 	&['\u{200C}'], // ZWNJ
-    &['؛', '؟', '،'], // punctuation, assigned to letters in windows-1251
-    &['·', '\u{00AD}', '¦', '∙', '\u{200D}'], // plausible next to alphabetic on either side
-    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '\u{200E}', '\u{200F}'], // implausible next to alphabetic on either side
-    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
-    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
-    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
 	&['پ'],
 	&['ٹ'],
 	&['چ'],
@@ -463,9 +471,16 @@ pub const ARABIC: [&[char]; 59] = [
 	&['ي'],
 	&['ً', 'ٌ', 'ٍ', 'َ', 'ُ', 'ِ', 'ّ', 'ْ'],
 	&['ے'],
+	// Start non-stored classes
+    &['·', '\u{00AD}', '¦', '∙', '\u{200D}'], // plausible next to alphabetic on either side
+    &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '\u{200E}', '\u{200F}'], // implausible next to alphabetic on either side
+    &['®', '¶', '¹', '²', '³', '»'], // implausible before alphabetic
+    &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«'], // implausible after alphabetic
+    &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &['؛', '؟', '،'], // implausible next to ASCII alphabetic
 ];
 
-pub const BALTIC: [&[char]; 51] = [
+pub const BALTIC: [&[char]; 52] = [
 	&[' '], // Space-like
 	&['a'],
 	&['b'],
@@ -512,14 +527,16 @@ pub const BALTIC: [&[char]; 51] = [
 	&['ų'], //
 	&['ū'], //
 	&['ž'], //
+	// Start non-stored classes
     &['·', '\u{00AD}', '¦', '∙', '’', '“'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '˙', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠'], // implausible next to alphabetic on either side
     &['®', '¶', '¹', '²', '³', '»', '”'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿', '«', '„'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const VIETNAMESE: [&[char]; 57] = [
+pub const VIETNAMESE: [&[char]; 58] = [
 	&[' '], // Space-like
 	&['a'],
 	&['b'],
@@ -572,17 +589,18 @@ pub const VIETNAMESE: [&[char]; 57] = [
 	&['û'],
 	&['ư'],
 	&['ÿ'], // Distinctive enough not to be grouped together with foreign vowels
+	// Start non-stored classes
     &['·', '\u{00AD}', '¦', '∙'], // plausible next to alphabetic on either side
     &['¨', '¯', '´', '¸', '˛', 'ˇ', '˘', '¤', '§', '¢', 'ƒ', '£', '¥', '№', '⌡', '⌠', '«', '»', 'ª', 'º', '₫'], // implausible next to alphabetic on either side (ordinal indicators and guillements deliberately here)
     &['®', '¶', '¹', '²', '³'], // implausible before alphabetic
     &['©', '°', 'µ', '¼', '½', '¾', '¡', '¿'], // implausible after alphabetic
     &['¬', '±', '×', '÷', '≈', '≤', '≥'], // implausible next to non-ASCII alphabetic
+    &[], // implausible next to ASCII alphabetic
 ];
 
-pub const THAI: [&[char]; 73] = [
+pub const THAI: [&[char]; 78] = [
 	&[' '], // Space-like
     &['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-	&['€', '฿', '๚', '๛', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'],
 	&['ก'], // Lead for CJK punctuation
 	&['ข'], // GB numbers
 	&['ค'], // EUC-JP Hiragana lead
@@ -653,4 +671,11 @@ pub const THAI: [&[char]; 73] = [
 	&['ํ'],
 	&['๎'],
 	&['ๅ', 'ฦ', 'ฅ', 'ฃ'], // Obsolete (contains EUC-JP Katakana lead, full-width ASCII)
+	// Start non-stored classes
+    &[], // plausible next to alphabetic on either side
+    &[], // implausible next to alphabetic on either side
+    &[], // implausible before alphabetic
+    &[], // implausible after alphabetic
+    &[], // implausible next to non-ASCII alphabetic
+    &['€', '฿', '๚', '๛', '๏', '๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'], // implausible next to ASCII alphabetic
 ];
